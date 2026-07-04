@@ -28,6 +28,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="blog.html">Blog</a>
+      <a href="video.html">Video</a>
+      <a href="events-log.html">Events Log</a>
       <a href="cart.html" class="cart-link">Cart <span class="cart-count">0</span></a>
     </div>
   </div>
@@ -36,6 +40,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section>
   <div class="container">
     <h2 class="section-title">All Products</h2>
+    <div class="shop-toolbar">
+      <input type="text" id="search-input" placeholder="Search products..." oninput="handleSearch(this.value)">
+      <div class="category-filters" id="category-filters"></div>
+    </div>
     <div class="grid" id="product-grid"></div>
   </div>
 </section>
@@ -47,6 +55,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="js/script.js"></script>
 <script>
   renderProductGrid("product-grid");
+  renderCategoryFilters();
   // Fires an item_list "view" style event — useful for practicing dynamic remarketing lists
   pushDL("view_item_list", {
     item_list_name: "All Products",

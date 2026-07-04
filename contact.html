@@ -28,6 +28,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
       <a href="contact.html">Contact</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="blog.html">Blog</a>
+      <a href="video.html">Video</a>
+      <a href="events-log.html">Events Log</a>
       <a href="cart.html" class="cart-link">Cart <span class="cart-count">0</span></a>
     </div>
   </div>
@@ -36,22 +40,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section>
   <div class="container">
     <h2 class="section-title">Contact Us / Get a Quote</h2>
-    <p>This lead form fires a <code>generate_lead</code> event — use it to practice Lead-gen campaigns and Facebook's "Lead" standard event.</p>
+    <p>3-step lead form — each step fires a <code>funnel_step</code> event (great for practicing drop-off retargeting), and the final step fires <code>generate_lead</code>.</p>
 
-    <form class="form-box" id="contact-form" onsubmit="submitContactForm(event)">
-      <label>Name</label>
-      <input type="text" name="name" required>
-      <label>Email</label>
-      <input type="email" name="email" required>
-      <label>Message</label>
-      <textarea name="message" required></textarea>
-      <br><br>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
+    <div class="step-dots">
+      <div class="step-dot step-dot-active"></div><div class="step-dot"></div><div class="step-dot"></div>
+    </div>
 
-    <div class="success-box form-box" id="contact-success" style="display:none;">
-      <div class="icon">✅</div>
-      <h3>Thanks! We'll be in touch.</h3>
+    <div class="form-box">
+      <form id="step-1" class="form-step form-step-active" onsubmit="submitStep1(event)">
+        <label>Name</label>
+        <input type="text" name="name" required>
+        <label>Phone</label>
+        <input type="tel" name="phone" required>
+        <br><br>
+        <button type="submit" class="btn">Next</button>
+      </form>
+
+      <form id="step-2" class="form-step" onsubmit="submitStep2(event)">
+        <label>What are you interested in?</label>
+        <select name="interest" required>
+          <option value="Audio">Audio</option>
+          <option value="Wearables">Wearables</option>
+          <option value="Photography">Photography</option>
+          <option value="Accessories">Accessories</option>
+        </select>
+        <label>Budget</label>
+        <select name="budget" required>
+          <option value="Under 2000">Under Rs. 2000</option>
+          <option value="2000-5000">Rs. 2000 - 5000</option>
+          <option value="5000+">Rs. 5000+</option>
+        </select>
+        <br><br>
+        <button type="submit" class="btn">Next</button>
+      </form>
+
+      <form id="step-3" class="form-step" onsubmit="submitStep3(event)">
+        <label>Message</label>
+        <textarea name="message" required></textarea>
+        <br><br>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+
+      <div id="step-4" class="form-step success-box">
+        <div class="icon">✅</div>
+        <h3>Thanks! We'll be in touch.</h3>
+      </div>
     </div>
   </div>
 </section>

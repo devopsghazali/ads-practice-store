@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UTM Parameters Explained – NovaGear Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T5V8J5LN');</script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T5V8J5LN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand">Nova<span>Gear</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="blog.html">Blog</a>
+      <a href="video.html">Video</a>
+      <a href="events-log.html">Events Log</a>
+      <a href="cart.html" class="cart-link">Cart <span class="cart-count">0</span></a>
+    </div>
+  </div>
+</nav>
+
+<section>
+  <div class="container" style="max-width:700px;">
+    <h1>UTM Parameters, gclid &amp; fbclid — Explained</h1>
+    <p><em>This is a long-ish article on purpose — use it to practice GTM's built-in "Scroll Depth" trigger (Triggers → New → Scroll Depth, 25/50/75/90%).</em></p>
+
+    <p>When you run a Facebook or Google ad, the click doesn't just land the user on your page — it can carry data with it, in the URL itself. That data is what lets Google Tag Manager, GA4, and your ad platforms figure out which campaign, which ad, and which keyword actually drove a visit or a sale.</p>
+
+    <h3>UTM parameters</h3>
+    <p><code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>, <code>utm_term</code>, and <code>utm_content</code> are five tags you manually add to the end of a URL, e.g.:</p>
+    <p><code>https://yourstore.com/?utm_source=facebook&utm_medium=cpc&utm_campaign=summer_sale</code></p>
+    <p>This site captures all of these automatically (see <code>captureUTMs()</code> in <code>js/script.js</code>) and stores them for the session, then attaches them to the <code>purchase</code> and <code>generate_lead</code> events — so on the Thank You page you can see exactly which campaign "gets credit" for a sale.</p>
+
+    <h3>gclid and fbclid</h3>
+    <p><code>gclid</code> is auto-added by Google Ads to every ad click (auto-tagging) — it's what Google Ads uses internally to match a conversion back to the exact ad and keyword. <code>fbclid</code> is Meta's equivalent, added automatically when someone clicks a Facebook/Instagram ad.</p>
+    <p>You don't need to add these manually — they show up on their own the moment someone clicks a real ad. Try it: take this site's live URL, add <code>?utm_source=facebook&utm_medium=paid&utm_campaign=test1</code> to the end, open it, add something to cart, and check the Thank You page or the <a href="events-log.html">Events Log</a> page.</p>
+
+    <h3>Why this matters for retargeting</h3>
+    <p>Once GTM fires a remarketing tag (Facebook Pixel / Google Ads remarketing) on every page view, anyone who visited — regardless of whether they bought — becomes part of an audience you can advertise to again. Combine that with UTM data and you can tell which channel brought visitors who <em>didn't</em> convert, and retarget them specifically.</p>
+
+    <p>Read more on the official docs:
+      <a href="https://support.google.com/analytics/answer/10917952" target="_blank" rel="noopener">Google's UTM guide</a> ·
+      <a href="https://www.facebook.com/business/help/898752960195806" target="_blank" rel="noopener">Meta Pixel docs</a>
+    </p>
+    <p>(Those two links are external — good for practicing GTM's "Just Links"/outbound click trigger too.)</p>
+
+    <p><a href="shop.html" class="btn">← Back to Shop</a></p>
+  </div>
+</section>
+
+<footer>
+  NovaGear is a fictional store for ad-platform practice only. No real payments are processed.
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

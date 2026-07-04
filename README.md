@@ -65,6 +65,23 @@ Use **GTM Preview mode** (Tags → Preview) to confirm each event fires and each
 3. Framework preset: **Other** (it's static HTML — no build command needed, no output directory override needed).
 4. Deploy. You'll get a live `*.vercel.app` URL to run real Facebook/Google ad campaigns against.
 
+## 6. Extra practice features (v2)
+
+| Feature | Page | Event / Trigger to practice |
+|---|---|---|
+| UTM/gclid/fbclid capture | all pages (`js/script.js`) | attached to `purchase` & `generate_lead`; see Thank You page "Attributed to" box |
+| Consent banner (Accept/Reject) | all pages | `consent_update` — Google Consent Mode v2 |
+| WhatsApp / Call floating buttons | all pages | `contact_click` |
+| Newsletter signup (footer) | all pages | `sign_up` |
+| Search + category filters | `shop.html` | `search`, `view_item_list` |
+| Wishlist | `shop.html` → `wishlist.html` | `add_to_wishlist` |
+| 3-step lead form | `contact.html` | `funnel_step` (x2) then `generate_lead` — practice drop-off retargeting |
+| YouTube video | `video.html` | GTM's **built-in YouTube Video trigger** (no code needed — enable it in GTM) |
+| Long article | `blog.html` | GTM's **built-in Scroll Depth trigger** + outbound link clicks |
+| Live events viewer | `events-log.html` | see every `dataLayer.push()` without opening DevTools |
+
+Try: open the site with `?utm_source=facebook&utm_medium=paid&utm_campaign=test1` appended to the URL, browse, place a test order, then check `events-log.html` and the Thank You page.
+
 ## Notes
 
 - Product data, prices, and images (emoji placeholders) are all fake — feel free to edit `js/script.js` (`PRODUCTS` array) to change them.

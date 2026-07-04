@@ -167,3 +167,70 @@ footer {
   padding: 10px 16px;
   text-align: center;
 }
+
+/* Consent banner */
+.consent-banner {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #1e1e2f; color: #fff;
+  padding: 14px 20px; display: flex; gap: 16px;
+  align-items: center; justify-content: space-between;
+  flex-wrap: wrap; z-index: 100; font-size: 13px;
+}
+.consent-actions { display: flex; gap: 8px; }
+.btn-small-inline { padding: 8px 14px; font-size: 13px; width: auto; }
+
+/* Floating action buttons */
+.floating-actions {
+  position: fixed; bottom: 20px; right: 20px;
+  display: flex; flex-direction: column; gap: 10px; z-index: 90;
+}
+.fab {
+  width: 50px; height: 50px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+.fab-whatsapp { background: #25D366; }
+.fab-call { background: #0984E3; }
+
+/* Newsletter (injected in footer) */
+.newsletter { display: flex; gap: 8px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+.newsletter input { padding: 8px 12px; border-radius: 6px; border: none; min-width: 220px; }
+
+/* Wishlist heart on cards */
+.card { position: relative; }
+.wishlist-btn {
+  position: absolute; top: 10px; right: 10px;
+  background: rgba(255,255,255,.9); border: none; border-radius: 50%;
+  width: 32px; height: 32px; cursor: pointer; font-size: 15px;
+}
+
+/* Shop toolbar: search + category chips */
+.shop-toolbar { margin-bottom: 20px; }
+#search-input {
+  width: 100%; max-width: 320px; padding: 10px 14px; border-radius: 8px;
+  border: 1px solid #dfe6e9; font-size: 14px; margin-bottom: 12px;
+}
+.category-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  padding: 6px 14px; border-radius: 999px; border: 1px solid #dfe6e9;
+  background: #fff; cursor: pointer; font-size: 13px;
+}
+.chip-active { background: #6C5CE7; color: #fff; border-color: #6C5CE7; }
+
+/* Multi-step lead form */
+.step-dots { display: flex; gap: 8px; margin-bottom: 20px; }
+.step-dot { width: 10px; height: 10px; border-radius: 50%; background: #dfe6e9; }
+.step-dot-active { background: #6C5CE7; }
+.form-step { display: none; }
+.form-step-active { display: block; }
+
+/* Attribution box (thank-you page) */
+.attribution-box {
+  margin-top: 16px; padding: 12px; background: #f1f2f6;
+  border-radius: 8px; font-size: 13px; color: #636e72;
+}
+
+/* Events log table */
+.log-table { width: 100%; border-collapse: collapse; background: #fff; font-size: 12px; }
+.log-table th, .log-table td { padding: 8px 10px; border-bottom: 1px solid #f1f2f6; text-align: left; vertical-align: top; }
+.log-table pre { margin: 0; white-space: pre-wrap; word-break: break-all; }
