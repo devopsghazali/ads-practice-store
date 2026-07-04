@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Product – NovaGear</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Google Tag Manager -->
+<!-- 🔧 REPLACE GTM-XXXXXXX WITH YOUR OWN CONTAINER ID (also in <body> below) -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand">Nova<span>Gear</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html" class="cart-link">Cart <span class="cart-count">0</span></a>
+    </div>
+  </div>
+</nav>
+
+<section>
+  <div class="container product-detail" id="product-root">
+    <!-- filled by JS -->
+  </div>
+</section>
+
+<footer>
+  NovaGear is a fictional store for ad-platform practice only. No real payments are processed.
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id") || "1";
+  const p = getProduct(id);
+  const root = document.getElementById("product-root");
+
+  if (p) {
+    root.innerHTML = `
+      <div class="product-thumb-lg" style="background:${p.color}">${p.emoji}</div>
+      <div class="product-info">
+        <p class="card-cat">${p.category}</p>
+        <h1>${p.name}</h1>
+        <p>${p.desc}</p>
+        <p class="price-lg">${formatPrice(p.price)}</p>
+        <button class="btn" onclick="addToCart('${p.id}'); window.location.href='cart.html';">Add to Cart</button>
+      </div>
+    `;
+    viewItem(p.id); // fires "view_item" dataLayer event
+    document.title = p.name + " – NovaGear";
+  } else {
+    root.innerHTML = "<p>Product not found. <a href='shop.html'>Back to shop</a></p>";
+  }
+</script>
+</body>
+</html>
