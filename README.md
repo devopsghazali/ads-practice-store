@@ -82,6 +82,16 @@ Use **GTM Preview mode** (Tags → Preview) to confirm each event fires and each
 
 Try: open the site with `?utm_source=facebook&utm_medium=paid&utm_campaign=test1` appended to the URL, browse, place a test order, then check `events-log.html` and the Thank You page.
 
+## 7. Mailchimp (newsletter + lead form)
+
+Newsletter (footer) and the 3-step Contact form both submit to `/api/subscribe.js`, a Vercel serverless function that calls Mailchimp **server-side** — the API key is never exposed to the browser.
+
+On Vercel: Project → Settings → Environment Variables, add:
+- `MAILCHIMP_API_KEY`
+- `MAILCHIMP_LIST_ID` (your Audience ID)
+
+Then redeploy. Locally (no backend), these forms will just show an error — that's expected, since `/api` functions only run on Vercel (or via `vercel dev`).
+
 ## Notes
 
 - Product data, prices, and images (emoji placeholders) are all fake — feel free to edit `js/script.js` (`PRODUCTS` array) to change them.

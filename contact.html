@@ -48,24 +48,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="form-box">
       <form id="step-1" class="form-step form-step-active" onsubmit="submitStep1(event)">
-        <label>Name</label>
-        <input type="text" name="name" required>
-        <label>Phone</label>
-        <input type="tel" name="phone" required>
+        <label for="f-name">Name</label>
+        <input id="f-name" type="text" name="name" required>
+        <label for="f-email">Email</label>
+        <input id="f-email" type="email" name="email" required>
+        <label for="f-phone">Phone</label>
+        <input id="f-phone" type="tel" name="phone" required>
         <br><br>
         <button type="submit" class="btn">Next</button>
       </form>
 
       <form id="step-2" class="form-step" onsubmit="submitStep2(event)">
-        <label>What are you interested in?</label>
-        <select name="interest" required>
+        <label for="f-interest">What are you interested in?</label>
+        <select id="f-interest" name="interest" required>
           <option value="Audio">Audio</option>
           <option value="Wearables">Wearables</option>
           <option value="Photography">Photography</option>
           <option value="Accessories">Accessories</option>
         </select>
-        <label>Budget</label>
-        <select name="budget" required>
+        <label for="f-budget">Budget</label>
+        <select id="f-budget" name="budget" required>
           <option value="Under 2000">Under Rs. 2000</option>
           <option value="2000-5000">Rs. 2000 - 5000</option>
           <option value="5000+">Rs. 5000+</option>
@@ -75,8 +77,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </form>
 
       <form id="step-3" class="form-step" onsubmit="submitStep3(event)">
-        <label>Message</label>
-        <textarea name="message" required></textarea>
+        <label for="f-message">Message</label>
+        <textarea id="f-message" name="message" required></textarea>
         <br><br>
         <button type="submit" class="btn">Send Message</button>
       </form>

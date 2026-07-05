@@ -137,8 +137,26 @@ function injectNewsletter() {
 
 function submitNewsletter(event) {
   event.preventDefault();
-  pushDL("sign_up", { method: "newsletter" });
-  event.target.innerHTML = "<p>✅ Subscribed! (test only, no email is actually sent)</p>";
+  const form = event.target;
+  const email = form.email.value;
+  subscribeToMailchimp(email).then(ok => {
+    if (ok) {
+      pushDL("sign_up", { method: "newsletter" });
+      form.innerHTML = "<p>✅ Subscribed!</p>";
+    } else {
+      form.innerHTML = "<p>⚠️ Could not subscribe — try again later.</p>";
+    }
+  });
+}
+
+// Calls our Vercel serverless function (/api/subscribe.js), which holds the
+// Mailchimp API key server-side. Never call Mailchimp directly from the browser.
+function subscribeToMailchimp(email, name) {
+  return fetch("/api/subscribe", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, name })
+  }).then(r => r.json()).then(data => !!data.success).catch(() => false);
 }
 
 // ---- Wishlist ----
@@ -451,6 +469,7 @@ function goToStep(stepNum) {
 function submitStep1(event) {
   event.preventDefault();
   leadFormData.name = event.target.name.value;
+  leadFormData.email = event.target.email.value;
   leadFormData.phone = event.target.phone.value;
   pushDL("funnel_step", { step_name: "contact_info", step_number: 1 });
   goToStep(2);
@@ -474,6 +493,7 @@ function submitStep3(event) {
     budget: leadFormData.budget,
     attribution: getAttribution()
   });
+  subscribeToMailchimp(leadFormData.email, leadFormData.name);
   goToStep(4); // success step
 }
 
